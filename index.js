@@ -1,0 +1,25 @@
+//import express,cors,dotenv into index.js file
+//Loads .env file contents into process.env by default.
+require('dotenv').config()
+const express = require('express')
+const cors = require('cors')
+const router = require('./routes/router')
+
+//create express server using express
+const bookstoreServer = express()
+//enable cors in server
+bookstoreServer.use(cors())
+//use json parser in server app
+bookstoreServer.use(express.json())
+//use router in server app
+bookstoreServer.use(router)
+//create a port for server app to view in web
+const PORT = 3000
+//server start to listen port for client request
+bookstoreServer.listen(PORT,()=>{
+    console.log("Bookstore Server Started... And Waiting for Client Request!!!");
+})
+
+bookstoreServer.get('/',(req,res)=>{
+    res.status(200).send(`<h1>Bookstore Server Started... And Waiting for Client Request!!!</h1>`)
+})
