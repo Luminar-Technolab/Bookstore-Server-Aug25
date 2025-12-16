@@ -12,8 +12,13 @@ router.post('/register',userController.registerController)
 router.post('/login',userController.loginController)
 //google login
 router.post('/google-login',userController.googleLoginController)
+//home projects
+router.get('/home/books',bookController.getHomeBookController)
 
-//----------------------AUthorised User------------------------------------
+
+//----------------------Authorised User------------------------------------
+//----------------------Role : User----------------------------
+
 //add book - request body in  formdata, header should has token
 router.post('/user/add/book',jwtMiddleware,multerMiddleware.array('uploadImg',3),bookController.addBookController)
 
