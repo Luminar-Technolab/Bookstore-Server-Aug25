@@ -38,7 +38,39 @@ exports.getHomeBookController = async (req,res)=>{
 }
 
 //get userallBookspage books - authorised user
+exports.getUserAllBooksController = async (req,res)=>{
+    console.log("Inside getUserAllBooksController");
+    const loginUserMail = req.payload
+    try{
+        const  allBooks = await books.find({sellerMail:{$ne:loginUserMail}})
+        res.status(200).json(allBooks)
+    }catch(error){
+        console.log(error);
+        res.status(500).json(error)        
+    }
+}
 
 //get userupload books- authorised user
-
+exports.getUserProfileBooksController = async (req,res)=>{
+    console.log("Inside getUserProfileBooksController");
+    const loginUserMail = req.payload
+    try{
+        const  userBooks = await books.find({sellerMail:loginUserMail})
+        res.status(200).json(userBooks)
+    }catch(error){
+        console.log(error);
+        res.status(500).json(error)        
+    }
+}
 // get user bought books- authorised user
+exports.getUserBoughtBooksController = async (req,res)=>{
+    console.log("Inside getUserBoughtBooksController");
+    const loginUserMail = req.payload
+    try{
+        const  userBooks = await books.find({buyerMail:loginUserMail})
+        res.status(200).json(userBooks)
+    }catch(error){
+        console.log(error);
+        res.status(500).json(error)        
+    }
+}
