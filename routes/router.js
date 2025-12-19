@@ -27,5 +27,7 @@ router.get('/all-books',jwtMiddleware,bookController.getUserAllBooksController)
 router.get('/user-books',jwtMiddleware,bookController.getUserProfileBooksController)
 //bought books
 router.get('/user-books/bought',jwtMiddleware,bookController.getUserBoughtBooksController)
+//edit user
+router.put('/user/:id/edit',jwtMiddleware,multerMiddleware.single('picture'),userController.userProfileUpdateController)
 
 module.exports = router
