@@ -39,6 +39,8 @@ router.get('/books/:id/view',jwtMiddleware,bookController.viewBookController)
 router.get('/books/all',adminMiddleware,bookController.getAllBooksController)
 //all users
 router.get('/users/all',adminMiddleware,userController.allUserController)
+//update book status
+router.put('/books/:id/update',adminMiddleware,bookController.updateBookStatusController)
 
 
 module.exports = router

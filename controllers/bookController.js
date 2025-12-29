@@ -102,3 +102,19 @@ exports.getAllBooksController = async (req,res)=>{
         res.status(500).json(error)        
     }
 }
+
+//update book status
+exports.updateBookStatusController = async (req,res)=>{
+    console.log("Inside updateBookStatusController");
+    //get id of book from url
+    const {id} = req.params
+    try{
+        const  updateBook = await books.findById({_id:id})
+        updateBook.status = "approved"
+        await updateBook.save()
+        res.status(200).json(updateBook)
+    }catch(error){
+        console.log(error);
+        res.status(500).json(error)        
+    }
+}
