@@ -32,6 +32,8 @@ router.get('/user-books/bought',jwtMiddleware,bookController.getUserBoughtBooksC
 router.put('/user/:id/edit',jwtMiddleware,multerMiddleware.single('picture'),userController.userProfileUpdateController)
 //view book
 router.get('/books/:id/view',jwtMiddleware,bookController.viewBookController)
+//delete book
+router.delete('/books/:id',jwtMiddleware,bookController.deleteBookController)
 
 //----------------------Role : admin----------------------------
 
